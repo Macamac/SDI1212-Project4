@@ -9,6 +9,8 @@ var myLib = function(){
 	var inputPhone=window.prompt("Please enter your phone number \nin XXX-XXX-XXXX format","469-286-6809");
 	var inputEmail=window.prompt("Please enter your email address.","mcamacho@fullsail.edu");
 	var inputURL=window.prompt("Please enter a valid URL beginning \nwith HTTP, HTTPS, or FTP.","http://www.fullsail.edu");
+	var inputCase=window.prompt("Title Case Function: Insert random words all \nwith mixed cases.","nIgHT elVEs AND BLooD elVES");
+	
 	//Validate 123-456-7890 pattern?
 	/*	Pattern = /^ \					Open expression, This input pattern must match:
 				(?([0-9]{3})\) 			The first three digits where each number is bewteen 0-9, 
@@ -26,6 +28,8 @@ var myLib = function(){
 				return false;
 			}
 		};
+	
+	
 	//Validate aaa@bbb.ccc email pattern?
 	var validEmail = function(checkEmail){
 		var valEmail = inputEmail,
@@ -36,17 +40,26 @@ var myLib = function(){
 				return false;
 			}
 		};
+	
+	
 	//Validate URL address
 	var validURL = function(checkURL){
 		var valURL = inputURL,
-		pattern = /^((ht|f)tp[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}$/;
+		pattern = new RegExp("(http|ftp|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?");
 			if (pattern.test(valURL)) {
 				return true;
 			} else {
 				return false;
 			}
 		};
+	
+	
 	//Title-case a string (split into words, then uppercase the first letter of each word)
+	var changeCase = function toTitleCase(inputCase){
+    	return inputCase.replace(/\w\S*/g, function(txt){
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+			});
+	};
 	
 	
 	
@@ -103,6 +116,8 @@ var myLib = function(){
 		"validEmail":validEmail,
 		"inputURL":inputURL,
 		"validURL":validURL,
+		"changeCase":changeCase,
+		"inputCase":inputCase,
 		"checkNumeric":checkNumeric,
 		"areYouMC": areYouMC,
 		"checkString": checkString
@@ -120,3 +135,4 @@ console.log("This dash is in position " + newLib.checkString("123-456-789"));
 console.log("Is " + newLib.inputPhone + " a valid phone number? " + newLib.validPhone(newLib.inputPhone));
 console.log("Is " + newLib.inputEmail + " a valid email address? " + newLib.validEmail(newLib.inputEmail));
 console.log("Is " + newLib.inputURL + " a valid URL address? " + newLib.validURL(newLib.inputURL));
+console.log("Converting words for Title Case - " + newLib.changeCase(newLib.inputCase));
