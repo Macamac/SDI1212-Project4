@@ -42,7 +42,7 @@ var myLib = function(){
 			return true;
 		}
 	};
-
+ 
 
 //Name function
 	var areYouMC = function(val){
