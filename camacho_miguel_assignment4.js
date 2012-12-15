@@ -11,11 +11,11 @@ var myLib = function(){
 	/*Validate 123-456-7890 pattern?
 		Pattern = /^ \					Open expression, This input pattern must match:
 				(?([0-9]{3})\) 			The first three digits where each number is bewteen 0-9, 
-				?[-. ]					Where a hyphen is optional
-				?([0-9]{3})				The second three digits where each number is bewteen 0-9,
-				[-. ]					Again, another hypen after this set is optional
-				?([0-9]{4})				The thrid set of numbers must have four digits where each number is bewteen 0-9, 
-				$/						End of the input.*/
+				?[-. ]				Where a hyphen is optional
+				?([0-9]{3})			The second three digits where each number is bewteen 0-9,
+				[-. ]				Again, another hypen after this set is optional
+				?([0-9]{4})			The thrid set of numbers must have four digits where each number is bewteen 0-9, 
+				$/				End of the input.*/
 	
 	var validPhone = function(checkPhone){
 		var valPhone = inputPhone,
