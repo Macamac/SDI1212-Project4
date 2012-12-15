@@ -10,6 +10,9 @@ var myLib = function(){
 	var inputEmail=window.prompt("Please enter your email address.","mcamacho@fullsail.edu");
 	var inputURL=window.prompt("Please enter a valid URL beginning \nwith HTTP, HTTPS, or FTP.","http://www.fullsail.edu");
 	var inputCase=window.prompt("Title Case Function: Insert random words all \nwith mixed cases.","nIgHT elVEs AND BLooD elVES");
+	var inputSep=window.prompt("Seperate Words Function: Insert random words with commas \nto be seperated in an output","tortillas,meat,cheese,tomatoes,lettuce,salsa");
+
+	
 	
 	//Validate 123-456-7890 pattern?
 	/*	Pattern = /^ \					Open expression, This input pattern must match:
@@ -62,10 +65,10 @@ var myLib = function(){
 	};
 	
 	
-	
-	
-	
-	
+	//Takes a list and sepearted with "/"
+	var keepSep = function(inputSep) {
+    	return inputSep = inputSep.replace(/\,/g,'/');
+	};
 	
 	
 	
@@ -118,6 +121,8 @@ var myLib = function(){
 		"validURL":validURL,
 		"changeCase":changeCase,
 		"inputCase":inputCase,
+		"keepSep":keepSep,
+		"inputSep":inputSep,
 		"checkNumeric":checkNumeric,
 		"areYouMC": areYouMC,
 		"checkString": checkString
@@ -136,3 +141,4 @@ console.log("Is " + newLib.inputPhone + " a valid phone number? " + newLib.valid
 console.log("Is " + newLib.inputEmail + " a valid email address? " + newLib.validEmail(newLib.inputEmail));
 console.log("Is " + newLib.inputURL + " a valid URL address? " + newLib.validURL(newLib.inputURL));
 console.log("Converting words for Title Case - " + newLib.changeCase(newLib.inputCase));
+console.log("Sepearting words, replacing the commas: " + newLib.keepSep(newLib.inputSep));
