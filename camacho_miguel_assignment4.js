@@ -11,8 +11,8 @@ var myLib = function(){
 	var inputURL=window.prompt("Please enter a valid URL beginning \nwith HTTP, HTTPS, or FTP.","http://www.fullsail.edu");
 	var inputCase=window.prompt("Title Case Function: Insert random words all \nwith mixed cases.","nIgHT elVEs AND BLooD elVES");
 	var inputSep=window.prompt("Seperate Words Function: Insert random words with commas \nto be seperated in an output","tortillas,meat,cheese,tomatoes,lettuce,salsa");
+	var inputValue=window.prompt("Enter a number to conver to currency.","434.5665");
 
-	
 	
 	//Validate 123-456-7890 pattern?
 	/*	Pattern = /^ \					Open expression, This input pattern must match:
@@ -71,8 +71,18 @@ var myLib = function(){
 	};
 	
 	
-	
-	
+	//Takes number with decimal and converts to currency, rounding up
+	var validValue = function formatCurrency(inputValue) {
+   		var valValue = inputValue,
+		valValue = isNaN(valValue) || valValue === '' || valValue === null ? 0.00 : valValue;
+    	return parseFloat(valValue).toFixed(2);
+	};
+
+
+
+
+
+
 //Below info is for notes, delete before turning in assignment
 //IF LOST POINTS USE: //Extra Credit: lost points on project 1 for conditionals
 //EC on lost points or messed up flow chart
@@ -123,6 +133,8 @@ var myLib = function(){
 		"inputCase":inputCase,
 		"keepSep":keepSep,
 		"inputSep":inputSep,
+		"validValue":validValue,
+		"inputValue":inputValue,
 		"checkNumeric":checkNumeric,
 		"areYouMC": areYouMC,
 		"checkString": checkString
@@ -142,3 +154,4 @@ console.log("Is " + newLib.inputEmail + " a valid email address? " + newLib.vali
 console.log("Is " + newLib.inputURL + " a valid URL address? " + newLib.validURL(newLib.inputURL));
 console.log("Converting words for Title Case - " + newLib.changeCase(newLib.inputCase));
 console.log("Sepearting words, replacing the commas: " + newLib.keepSep(newLib.inputSep));
+console.log("The entered total of " + newLib.inputValue + " converts to " + newLib.validValue(newLib.inputValue));
