@@ -8,23 +8,15 @@ Code Library Functions
 var myLib = function(){
 	var inputPhone=window.prompt("Please enter your phone number \nin XXX-XXX-XXXX format","469-286-6809");
 	var inputEmail=window.prompt("Please enter your email address.","mcamacho@fullsail.edu");
+	var inputURL=window.prompt("Please enter a valid URL beginning \nwith HTTP, HTTPS, or FTP.","http://www.fullsail.edu");
 	//Validate 123-456-7890 pattern?
 	/*	Pattern = /^ \					Open expression, This input pattern must match:
 				(?([0-9]{3})\) 			The first three digits where each number is bewteen 0-9, 
-<<<<<<< HEAD
-				?[-. ]				Where a hyphen is optional
-				?([0-9]{3})			The second three digits where each number is bewteen 0-9,
-				[-. ]				Again, another hypen after this set is optional
-				?([0-9]{4})			The thrid set of numbers must have four digits where each number is bewteen 0-9, 
-				$/				End of the input.*/
-	
-=======
 				?[-]					Where a hyphen is required
 				?([0-9]{3})				The second three digits where each number is bewteen 0-9,
 				[-]						Again, another hypen after this set is required
 				?([0-9]{4})				The thrid set of numbers must have four digits where each number is bewteen 0-9, 
 				$/						End of the input.*/
->>>>>>> Project 4 Update
 	var validPhone = function(checkPhone){
 		var valPhone = inputPhone,
 		pattern = /^\(?([0-9]{3})\)?[-]([0-9]{3})?[-]([0-9]{4})$/;
@@ -44,6 +36,26 @@ var myLib = function(){
 				return false;
 			}
 		};
+	//Validate URL address
+	var validURL = function(checkURL){
+		var valURL = inputURL,
+		pattern = /^((ht|f)tp[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}$/;
+			if (pattern.test(valURL)) {
+				return true;
+			} else {
+				return false;
+			}
+		};
+	//Title-case a string (split into words, then uppercase the first letter of each word)
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 //Below info is for notes, delete before turning in assignment
 //IF LOST POINTS USE: //Extra Credit: lost points on project 1 for conditionals
@@ -89,6 +101,8 @@ var myLib = function(){
 		"validPhone":validPhone,
 		"inputEmail":inputEmail,
 		"validEmail":validEmail,
+		"inputURL":inputURL,
+		"validURL":validURL,
 		"checkNumeric":checkNumeric,
 		"areYouMC": areYouMC,
 		"checkString": checkString
@@ -104,7 +118,5 @@ console.log("Is this a number? " + newLib.checkNumeric(122)); //the method is af
 console.log("Is This Miguel? " + newLib.areYouMC("MC"));
 console.log("This dash is in position " + newLib.checkString("123-456-789"));
 console.log("Is " + newLib.inputPhone + " a valid phone number? " + newLib.validPhone(newLib.inputPhone));
-<<<<<<< HEAD
-=======
 console.log("Is " + newLib.inputEmail + " a valid email address? " + newLib.validEmail(newLib.inputEmail));
->>>>>>> Project 4 Update
+console.log("Is " + newLib.inputURL + " a valid URL address? " + newLib.validURL(newLib.inputURL));
