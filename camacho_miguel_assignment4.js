@@ -12,7 +12,15 @@ var myLib = function(){
 	var inputCase=window.prompt("Title Case Function: Insert random words all \nwith mixed cases.","nIgHT elVEs AND BLooD elVES");
 	var inputSep=window.prompt("Seperate Words Function: Insert random words with commas \nto be seperated in an output","tortillas,meat,cheese,tomatoes,lettuce,salsa");
 	var inputValue=window.prompt("Enter a number to conver to currency.","434.5665");
-
+	alert("You'll be entering three numbers in the next box to test if the number \nyou choose is close to the target number you choose by a certain percent you choose...choose wisely!");
+	var startNum=window.prompt("Enter the starting number","25");
+	var targNum=window.prompt("Enter the number you'd like to compare the first number against","75");
+	var targPerc=window.prompt("Enter the number the first number should not exceed above or below the target number by percent","20");
+	var inputNum=window.prompt("Insert a number to convert to an actual number","42");
+	//var inputSet=window.prompt("Insert set numbers to find smallest in group.","2,4,55,6");
+	//var inputRan=window.prompt("Insert random objects and numbers.  Numbers will be selected out of the list.",[]);
+	
+	
 	
 	//Validate 123-456-7890 pattern?
 	/*	Pattern = /^ \					Open expression, This input pattern must match:
@@ -79,49 +87,24 @@ var myLib = function(){
 	};
 
 
-
-
-
-
-//Below info is for notes, delete before turning in assignment
-//IF LOST POINTS USE: //Extra Credit: lost points on project 1 for conditionals
-//EC on lost points or messed up flow chart
-//Whole library beeds to be built in the one function, one Library!!
-//Each function below is a method of the library, so with newLib, calling a 
-//Check Numeric function
-
-	var checkNumeric = function(val){
-		if (isNaN(val)){
+	//Fuzzy match logic verifying if a number is above or below a number within a certain percent?
+	var validFuzz = function (startNum,targNum,targPerc) {
+		var valPerc = (startNum/targNum) * 100;
+		if ((startNum >= targNum && valPerc >= targPerc) || (startNum < targNum && valPerc < targPerc)) {
 			return false;
-		} else{
-			return true;
-		}
-	};
- 
-
-//Name function
-	var areYouMC = function(val){
-		if (val === "MC"){ 
-			return true;
 		} else {
-			return false;
-		}
+			return true;
+		};
 	};
 
-//Check Pattern function
-	var checkString = function(val) {
-		var strLen = val.length; //.lenght, no (), so it's a property of object
-		for (var i=0; 1 <= strLen; i++) { 
-			if (val.substring(i,i+1) === "-"){ //but here .length has () so it's a method o
-				return i;
-			}
-		}
-	};
 	
-	
-	
-	
-	//return bracket same line with return
+	//Convert a text number to actual number
+ 	var actualNum = function (inputNum) {
+		return Number(inputNum);
+    };
+
+
+
 	return {
 		"inputPhone":inputPhone,
 		"validPhone":validPhone,
@@ -135,23 +118,20 @@ var myLib = function(){
 		"inputSep":inputSep,
 		"validValue":validValue,
 		"inputValue":inputValue,
-		"checkNumeric":checkNumeric,
-		"areYouMC": areYouMC,
-		"checkString": checkString
-	}
-	
-	
-
-//End Function	
+		"startNum":startNum,
+		"targNum":targNum,
+		"targPerc":targPerc,
+		"validFuzz":validFuzz,
+		"actualNum":actualNum,
+		"inputNum":inputNum
+	};
 };
 var newLib = new myLib();
-
-console.log("Is this a number? " + newLib.checkNumeric(122)); //the method is after the ., so here is method.function
-console.log("Is This Miguel? " + newLib.areYouMC("MC"));
-console.log("This dash is in position " + newLib.checkString("123-456-789"));
 console.log("Is " + newLib.inputPhone + " a valid phone number? " + newLib.validPhone(newLib.inputPhone));
 console.log("Is " + newLib.inputEmail + " a valid email address? " + newLib.validEmail(newLib.inputEmail));
 console.log("Is " + newLib.inputURL + " a valid URL address? " + newLib.validURL(newLib.inputURL));
 console.log("Converting words for Title Case - " + newLib.changeCase(newLib.inputCase));
 console.log("Sepearting words, replacing the commas: " + newLib.keepSep(newLib.inputSep));
 console.log("The entered total of " + newLib.inputValue + " converts to " + newLib.validValue(newLib.inputValue));
+console.log("Is " + newLib.startNum + " above or below " + newLib.targNum + " by " + newLib.targPerc +"%? " + newLib.validFuzz(newLib.startNum,newLib.targNum,newLib.targPerc));
+console.log("The entered string number of " + newLib.inputNum + " has an output of: " +newLib.actualNum(newLib.inputNum));
